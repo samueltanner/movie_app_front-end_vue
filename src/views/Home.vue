@@ -16,6 +16,10 @@
       </div>
 
       <button v-on:click="addMovie()">Add Movie</button>
+
+      <ul>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      </ul>
     </div>
     <br />
 
@@ -77,7 +81,7 @@ export default {
     return {
       movies: [],
       showInfo: false,
-
+      errors: [],
       newMovieTitle: "",
       newMovieYear: "",
       newMovieDirector: "",
@@ -109,7 +113,8 @@ export default {
           console.log("Movie was added", response.data);
           this.movies.push(response.data);
         })
-        .catch(function (error) {
+        .catch((error) => {
+          this.errors = error.response.data.errors;
           console.log(error.response);
         });
     },
@@ -136,16 +141,22 @@ export default {
         .then((response) => {
           console.log("movie was updated", response.data);
         })
-        .catch(function (error) {
+        .catch((error) => {
+          this.errors = error.response.data.errors;
           console.log(error.response);
         });
     },
     destroyMovie: function (movie) {
-      axios.delete("/api/movies/" + movie.id).then((response) => {
-        console.log("movie deleted", response.data);
-        var index = this.movies.indexOf(movie);
-        this.movies.splice(index, 1);
-      });
+      axios
+        .delete("/api/movies/" + movie.id)
+        .then((response) => {
+          console.log("movie deleted", response.data);
+          var index = this.movies.indexOf(movie);
+          this.movies.splice(index, 1);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
   },
 };
