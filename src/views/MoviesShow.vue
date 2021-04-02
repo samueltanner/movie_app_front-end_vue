@@ -1,6 +1,7 @@
 <template>
   <div class="container movies-show">
     <div>
+      <img v-bind:src="movie.image_url" v-bind:alt="movie.title" />
       <h1>{{ movie.title }}</h1>
       <h3>{{ movie.year }}</h3>
       <h3>{{ movie.director }}</h3>

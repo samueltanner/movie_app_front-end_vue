@@ -24,6 +24,10 @@
         <label>Director:</label>
         <input type="text" class="form-control" v-model="director" />
       </div>
+      <div class="form-group">
+        <label>Poster URL:</label>
+        <input type="text" class="form-control" v-model="image_url" />
+      </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>
@@ -39,6 +43,7 @@ export default {
       year: "",
       plot: "",
       director: "",
+      image_url: "",
       errors: [],
     };
   },
@@ -49,6 +54,7 @@ export default {
         year: this.year,
         plot: this.plot,
         director: this.director,
+        image_url: this.image_url,
       };
       axios
         .post("/api/movies/", params)

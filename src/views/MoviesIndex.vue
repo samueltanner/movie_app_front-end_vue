@@ -4,6 +4,9 @@
       <div class="col-sm-4" v-for="movie in movies" v-bind:key="movie.id">
         <div class="card">
           <div class="card-body">
+            <div class="card-image">
+              <img v-bind:src="movie.image_url" class="card-img-top" v-bind-alt="movie.title" />
+            </div>
             <h5 class="card-title">{{ movie.title }}</h5>
             <p class="card-text">{{ movie.year }}</p>
             <router-link v-bind:to="`/movies/${movie.id}`">

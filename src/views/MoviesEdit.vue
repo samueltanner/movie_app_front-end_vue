@@ -11,6 +11,7 @@
       <input type="text" class="form-control" v-model="movie.year" />
       <input type="text" class="form-control" v-model="movie.plot" />
       <input type="text" class="form-control" v-model="movie.director" />
+      <input type="text" class="form-control" v-model="movie.image_url" />
       <br />
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -41,6 +42,7 @@ export default {
         director: movie.director,
         plot: movie.plot,
         year: movie.year,
+        image_url: movie.image_url,
       };
       axios
         .patch("/api/movies/" + movie.id, params)
