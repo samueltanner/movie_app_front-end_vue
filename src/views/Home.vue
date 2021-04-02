@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <h1>WELCOME TO THE MOVIES</h1>
-
     <div>
       <h1>Add a Movie</h1>
       <div id="movieInputArea">
