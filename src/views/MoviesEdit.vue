@@ -10,6 +10,7 @@
       <input type="text" class="form-control" v-model="movie.title" />
       <input type="text" class="form-control" v-model="movie.year" />
       <input type="text" class="form-control" v-model="movie.plot" />
+      <small>{{ 300 - movie.plot.length }} Characters Left</small>
       <input type="text" class="form-control" v-model="movie.director" />
       <input type="text" class="form-control" v-model="movie.image_url" />
       <br />

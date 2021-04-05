@@ -90,9 +90,13 @@
               Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link to="/login" class="dropdown-item">Login</router-link>
-              <router-link to="/logout" class="dropdown-item">Logout</router-link>
-              <router-link to="/signup" class="dropdown-item">Signup</router-link>
+              <span v-if="isLoggedIn()">
+                <router-link to="/logout" class="dropdown-item">Logout</router-link>
+              </span>
+              <span v-else>
+                <router-link to="/login" class="dropdown-item">Login</router-link>
+                <router-link to="/signup" class="dropdown-item">Signup</router-link>
+              </span>
               <!-- <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
@@ -120,3 +124,13 @@
 </template>
 
 <style></style>
+
+<script>
+export default {
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>
