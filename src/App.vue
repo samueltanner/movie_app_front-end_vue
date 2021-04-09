@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <router-link to="/" class="nav-link">Home</router-link>
+            <router-link to="/movies" class="nav-link">Home</router-link>
             <span class="sr-only">(current)</span>
           </li>
           <!-- <li class="nav-item">
@@ -123,7 +123,11 @@
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.jumbotron {
+  background-color: #eec116;
+}
+</style>
 
 <script>
 export default {

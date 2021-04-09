@@ -1,16 +1,74 @@
 <template>
   <div class="container movies-create">
-    <form v-on:submit.prevent="submitMovie()">
+    <form action="movie-create" method="post" v-on:submit.prevent="submitMovie()">
       <h1>Add Movie</h1>
+
       <div>
         <ul>
           <li class="text danger" v-for="error in errors" v-bind:key="error">{{ error }}</li>
         </ul>
       </div>
 
-      <div class="form-group">
+      <span class="form-group">
+        <label for="title">Movie Title:</label>
+        <input class="from-controll" type="text" id="title" name="title" size="50" v-model="title" required />
+      </span>
+      <br />
+      <span class="form-group">
+        <label for="year">Year:</label>
+        <input
+          class="from-control"
+          type="number"
+          id="year"
+          name="year"
+          min="1900"
+          placeholder="Release Year"
+          required
+          v-model="year"
+        />
+      </span>
+      <br />
+      <span class="form-group">
+        <label for="director">Director:</label>
+        <input class="from-control" type="text" id="director" name="director" required v-model="director" />
+      </span>
+      <br />
+      <span class="form-group">
+        <label for="plot">Plot:</label>
+        <textarea
+          class="from-control"
+          id="plot"
+          name="plot"
+          rows="5"
+          cols="50"
+          placeholder="Once upon a time..."
+          required
+          v-model="plot"
+        />
+        <small>{{ 300 - plot.length }} Characters Remaining</small>
+      </span>
+      <br />
+      <span class="form-group">
+        <label for="poster">Poster URL:</label>
+        <input
+          class="from-control"
+          type="url"
+          id="poster"
+          name="image_url"
+          placeholder="https://example.com"
+          pattern="https://.*"
+          size="50"
+          required
+          v-model="image_url"
+        />
+      </span>
+      <br />
+      <button type="reset">Reset</button>
+      <button type="submit" class="btn btn-primary" value="Submit">Add Movie to IMdB</button>
+
+      <!-- <div class="form-group">
         <label>Title:</label>
-        <input type="text" class="form-control" v-model="title" />
+        <input type="text" class="form-control" v-model="title"/>
       </div>
       <div class="form-group">
         <label>Year:</label>
@@ -29,7 +87,7 @@
         <label>Poster URL:</label>
         <input type="text" class="form-control" v-model="image_url" />
       </div>
-      <input type="submit" class="btn btn-primary" value="Submit" />
+      <input type="submit" class="btn btn-primary" value="Submit" /> -->
     </form>
   </div>
 </template>
@@ -71,3 +129,22 @@ export default {
   },
 };
 </script>
+
+<style>
+label {
+  display: block;
+}
+
+input,
+label {
+  margin: 5px 0;
+}
+
+button {
+  margin: 5px 5px 5px 5px;
+}
+
+small {
+  display: block;
+}
+</style>

@@ -1,21 +1,18 @@
 <template>
   <div class="movies-index">
-    <p>
+    <div>
+      <label id="movie-title-search" class="label movie-search" for="search">Search Movies by Title:</label>
+      <input class="movie-search" type="text" name="title-search" id="search" v-model="titleFilter" list="titles" />
+    </div>
+    <!-- <p>
       Search by title:
       <input v-model="titleFilter" list="titles" />
-    </p>
+    </p> -->
     <datalist id="titles">
       <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
     </datalist>
-    <div>
-      <button>Sort Alphabetically</button>
-    </div>
     <div class="row">
-      <div
-        class="col-sm-4"
-        v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), 'title')"
-        v-bind:key="movie.id"
-      >
+      <div class="col-sm-4" v-for="movie in filterBy(movies, titleFilter, 'title')" v-bind:key="movie.id">
         <div class="card">
           <div class="card-body">
             <div class="card-image">
@@ -65,3 +62,23 @@ export default {
   },
 };
 </script>
+
+<style>
+#movie-title-search {
+  text-align: center;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto; */
+}
+/* .label {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} */
+.movie-search {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+</style>

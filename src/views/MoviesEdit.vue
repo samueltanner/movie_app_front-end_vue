@@ -7,12 +7,55 @@
           {{ error }}
         </li>
       </ul>
-      <input type="text" class="form-control" v-model="movie.title" />
-      <input type="text" class="form-control" v-model="movie.year" />
-      <input type="text" class="form-control" v-model="movie.plot" />
-      <small>{{ 300 - movie.plot.length }} Characters Left</small>
-      <input type="text" class="form-control" v-model="movie.director" />
-      <input type="text" class="form-control" v-model="movie.image_url" />
+      <span class="form-group">
+        <label for="title">Movie Title:</label>
+        <input class="from-controll" type="text" id="title" name="title" size="50" v-model="movie.title" />
+      </span>
+      <!-- <input type="text" class="form-control" v-model="movie.title" /> -->
+      <span class="form-group">
+        <label for="year">Year:</label>
+        <input
+          class="from-control"
+          type="number"
+          id="year"
+          name="year"
+          min="1900"
+          placeholder="Release Year"
+          v-model="movie.year"
+        />
+      </span>
+      <!-- <input type="text" class="form-control" v-model="movie.year" /> -->
+      <span class="form-group">
+        <label for="director">Director:</label>
+        <input class="from-control" type="text" id="director" name="director" v-model="movie.director" />
+      </span>
+      <!-- <input type="text" class="form-control" v-model="movie.director" /> -->
+      <span>
+        <textarea
+          type="text"
+          class="form-control"
+          name="plot"
+          rows="5"
+          cols="50"
+          placeholder="Once upon a time..."
+          v-model="movie.plot"
+        />
+        <small>{{ 300 - movie.plot.length }} Characters Left</small>
+        <span class="form-group">
+          <label for="poster">Poster URL:</label>
+          <input
+            class="from-control"
+            type="url"
+            id="poster"
+            name="image_url"
+            placeholder="https://example.com"
+            pattern="https://.*"
+            size="50"
+            v-model="movie.image_url"
+          />
+        </span>
+      </span>
+      <!-- <input type="text" class="form-control" v-model="movie.image_url" /> -->
       <br />
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -65,3 +108,22 @@ export default {
   },
 };
 </script>
+
+<style>
+label {
+  display: block;
+}
+
+input,
+label {
+  margin: 5px 0;
+}
+
+button {
+  margin: 5px 5px 5px 5px;
+}
+
+small {
+  display: block;
+}
+</style>
